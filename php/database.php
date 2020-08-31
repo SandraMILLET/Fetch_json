@@ -32,7 +32,7 @@ class Database
         return $this->db;
     }
 
-    public function insertPlayer()
+   public function insertPlayer()
     {
         $sql = 'INSERT INTO ' . self::DB_TABLE . ' (nom, pseudo, xp, img) VALUES (:nom, :pseudo, :xp, :img)';
         $req = $this->db->prepare($sql);
@@ -49,3 +49,11 @@ class Database
         }
     }
 }
+/*$data = [
+    $play1,
+    $play2,
+    $play3
+];
+$stmt = $pdo->prepare("INSERT INTO player (nom, pseudo, xp, img) VALUES (?,?,?, ?)");
+$stmt= $pdo->prepare($sql);
+$stmt->execute($data);
