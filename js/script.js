@@ -12,43 +12,17 @@ window.onload = function () {
 
 /*insertion API*/
 let urlAPI = "js/joueur.json";
-
-/*fetch(urlAPI)
-    .then(response => {
-        //reponse est elle là?
-        console.log(response);
-        //retourne le résultat dans la console en json
-        return response.json();
-    })
-    //prends les data
-    .then(function (data) {
-        appendData(data);
-        //console.log(data);
-    })
-    .catch(error => {
-        console.log(error);
-        fetchResultjoueur.innerHTML = "<p>'ERREUR" + error.statusText + "</p>"
-    });
-    function appendData(data){
-        for (var i = 0; i < data.length; i++){
-            let fetchResultjoueur = document.getElementById("result");
-            fetchResultjoueur.innerHTML = "<p>Nom : " + data.nom + "</p>" +
-                "<p>Pseudo : " + data.pseudo + "</p>" +
-                "<p>XP : " + data.xp + "</p>" +
-                "<p>Avatar :" + "<img src=" + data.urlimg + ">" + "</p>";
-                fetchResultjoueur.appendChild();
-            }
-        }*/
-        //affiche le résultat de tel élément du json
         
-    //si erreur alors affiche ça
+    
     fetch(urlAPI)
             .then(function (response) {
                 return response.json();
             })
+            //affiche le résultat de tel élément du json
             .then(function (data) {
                 appendData(data);
             })
+            //si erreur alors affiche ça
             .catch(function (err) {
                 console.log('error: ' + err);
             });
