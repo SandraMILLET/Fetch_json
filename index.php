@@ -6,7 +6,7 @@ echo 'salut';
     echo'connect bdd ok';
     $play1 = new Player('Sandra', 'Soara',5000, 'img/crow.jpg');
     $play2 = new Player('Océane', 'Océ', 2500, 'img/chat.png');
-    $play3 = new Player('Laurie', 'Lau', 3500, 'img/canecorso.png');
+    
     
     echo 'Play1 ' . $play1->getNom();
     //$player = $database->insertPlayer();
@@ -46,7 +46,7 @@ echo 'salut';
             <div class="md-6 affichePlayer">
                 <?php echo $play1->getNom()?>
                 <?php echo $play2->getNom()?>
-                <?php echo $play3->getNom()?>
+                
                 <p class="nbre"> </p>
             </div>
         </row>
