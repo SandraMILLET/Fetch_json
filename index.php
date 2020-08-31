@@ -1,3 +1,16 @@
+
+<?php
+echo 'salut';
+    require 'class/player.php';
+    require('class/Database.php');
+    $database = new Database();
+    $play1 = new Player('Sandra', 'Soara',5000,  'img/crow.jpg');
+    $play2 = new Player('Océane', 'Océ', 2500, 'img/chat.png');
+    $play3 = new Player('Laurie', 'Lau', 3500,  'img/canecorso.png');
+    
+    echo 'Play1 ' . $play1->getNom();
+
+    ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,16 +24,38 @@
 </head>
 
 <body>
-    <h1>Créer json, l'afficher en console puis dans la page web</h1>
-    <h2>Le DOM se récupère-t-il?</h2>
-    <div id="joueur">
 
+    <h1>Créer json, l'afficher en console puis dans la page web</h1>
+
+    <h2>Le DOM se récupère-t-il?</h2>
+
+    <div id="joueur"> </div>
+
+    <!--<h2>Présentation du joueur :</h2>-->
+    <!--<div id="result"> </div>-->
+
+    <h2 class="choice">Choisissez vos joueurs</h2>
+    
+    <div class="container">
+        <row class="choice">
+            <div class="md-6" id="result">
+                <button id="player" class="btn btn-warning">Joueur 1</button>
+                <button id="player" class="btn btn-warning">Joueur 2</button>
+            </div>
+            <div class="md-6 affichePlayer">
+            <?php echo $play1->getNom()?>
+            <?php echo $play2->getNom()?>
+            <?php echo $play3->getNom()?>
+                <p class="nbre"> </p>
+            </div>
+        </row>
+        <div class="save">
+        <button class="btn btn-primary">Sauvegarder</button></div>
     </div>
-    <h2>
-        Présentation du joueur :
-    </h2>
-    <div id="result">
-    </div>
+    
+
+
+
     <script src="js/script.js"></script>
 </body>
 
