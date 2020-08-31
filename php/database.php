@@ -49,11 +49,3 @@ class Database
         }
     }
 }
-/*$data = [
-    $play1,
-    $play2,
-    $play3
-];
-$stmt = $pdo->prepare("INSERT INTO player (nom, pseudo, xp, img) VALUES (?,?,?, ?)");
-$stmt= $pdo->prepare($sql);
-$stmt->execute($data);

@@ -51,4 +51,6 @@ let urlAPI = "js/joueur.json";
             })
         
         }
-    
+    affichenbr = document.getElementById('Nbre');
+    var div = document.createElement("div");
+    div.innerHTML = 'Nombre de joueur: ' + data.lenght; 

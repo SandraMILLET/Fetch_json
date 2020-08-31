@@ -40,12 +40,13 @@ echo 'salut';
         <row class="choice">
             <div class="md-6" id="result">
             <a href="?action=insertPlayer()?>">Envoyer</a>
-                <button id="player" class="btn btn-warning">Joueur 1</button>
-                <button id="player" class="btn btn-warning">Joueur 2</button>
+                
             </div>
             <div class="md-6 affichePlayer">
                 <?php echo $play1->getNom()?>
+                <button id="player" class="btn btn-warning">Joueur 1</button>
                 <?php echo $play2->getNom()?>
+                <button id="player" class="btn btn-warning">Joueur 2</button>
                 
                 <p class="nbre"> </p>
             </div>
