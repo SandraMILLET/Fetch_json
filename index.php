@@ -1,4 +1,3 @@
-
 <?php
 echo 'salut';
     require 'class/player.php';
@@ -10,7 +9,7 @@ echo 'salut';
     $play3 = new Player('Laurie', 'Lau', 3500, 'img/canecorso.png');
     
     echo 'Play1 ' . $play1->getNom();
-    $player = $database->insertPlayer();
+    //$player = $database->insertPlayer();
     ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,7 +35,7 @@ echo 'salut';
     <!--<div id="result"> </div>-->
 
     <h2 class="choice">Choisissez vos joueurs</h2>
-    
+
     <div class="container">
         <row class="choice">
             <div class="md-6" id="result">
@@ -44,16 +43,17 @@ echo 'salut';
                 <button id="player" class="btn btn-warning">Joueur 2</button>
             </div>
             <div class="md-6 affichePlayer">
-            <?php echo $play1->getNom()?>
-            <?php echo $play2->getNom()?>
-            <?php echo $play3->getNom()?>
+                <?php echo $play1->getNom()?>
+                <?php echo $play2->getNom()?>
+                <?php echo $play3->getNom()?>
                 <p class="nbre"> </p>
             </div>
         </row>
         <div class="save">
-        <button class="btn btn-primary">Sauvegarder</button></div>
+            <button class="btn btn-primary">Sauvegarder</button>
+        </div>
     </div>
-    
+
 
 
 

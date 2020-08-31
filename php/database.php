@@ -26,13 +26,11 @@ class Database
             //die('Erreur : ' . $e->getMessage());
         }
     }
-
     // public $db's getter
     public function getDB()
     {
         return $this->db;
     }
-
 
     public function insertPlayer()
     {

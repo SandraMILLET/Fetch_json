@@ -3,18 +3,18 @@
     "nom" : "Sandra",
     "pseudo" : "Soara",
     "xp" : "3000",
-    "urlimg" : "img/crow.jpg"
+    "urlimg" : "/img/crow.jpg"
 },
 {
     "nom" : "Océane",
     "pseudo" : "Océ",
     "xp" : "2000",
-    "urlimg" : "img/canecorse.jpg"
+    "urlimg" : "/img/canecorse.jpg"
 },
 {
     "nom" : "Laurie",
     "pseudo" : "Lau",
     "xp" : "2800",
-    "urlimg" : "img/chat.jpg"
+    "urlimg" : "/img/chat.jpg"
 }
 ]
