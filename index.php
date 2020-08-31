@@ -2,14 +2,15 @@
 <?php
 echo 'salut';
     require 'class/player.php';
-    require('class/Database.php');
+    require 'php/Database.php';
     $database = new Database();
-    $play1 = new Player('Sandra', 'Soara',5000,  'img/crow.jpg');
+    echo'connect bdd ok';
+    $play1 = new Player('Sandra', 'Soara',5000, 'img/crow.jpg');
     $play2 = new Player('Océane', 'Océ', 2500, 'img/chat.png');
-    $play3 = new Player('Laurie', 'Lau', 3500,  'img/canecorso.png');
+    $play3 = new Player('Laurie', 'Lau', 3500, 'img/canecorso.png');
     
     echo 'Play1 ' . $play1->getNom();
-
+    $player = $database->insertPlayer();
     ?>
 <!DOCTYPE html>
 <html lang="fr">

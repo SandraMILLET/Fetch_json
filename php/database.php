@@ -1,11 +1,8 @@
 <?php
+
 class Database
 {
-
-    private $db; // private class's member (attribute, property, variable)
-
-    // constants in class .. How to use it ? 
-    // http://www.lephpfacile.com/manuel-php/language.oop5.constants.php
+    private $db;
     const DB_NAME = 'fetchJson';
     const DB_HOST = '127.0.0.1';
     const DB_USER = 'root';
@@ -35,3 +32,22 @@ class Database
     {
         return $this->db;
     }
+
+
+    public function insertPlayer()
+    {
+        $sql = 'INSERT INTO ' . self::DB_TABLE . ' (nom, pseudo, xp, img) VALUES (:nom, :pseudo, :xp, :img)';
+        $req = $this->db->prepare($sql);
+        try {
+            $result = $req->execute([
+                'nom' => $nom,
+                'pseudo' => $pseudo,
+                'xp' => $xp,
+                'img'=> $img
+            ]);
+            return $result;
+        } catch (PDOException $e) {
+            return 'error: ' . $e->getMessage();
+        }
+    }
+}
