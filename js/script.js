@@ -1,3 +1,6 @@
+/* debut ca marche */
+
+
 window.onload = function () {
     console.log('page load');
 
@@ -10,7 +13,6 @@ window.onload = function () {
 
 /*insertion API*/
 let urlAPI = "js/joueur.json";
-        
     
     fetch(urlAPI)
             .then(function (response) {
@@ -37,20 +39,4 @@ let urlAPI = "js/joueur.json";
                 mainContainer.appendChild(div);
             }
         }
-
-
-        let players = document.getElementsById("affichePlayer");
-        console.log(players.length);
-        
-        for(let i = 0 ; i < (players.length) ; i++){
-            players[i].addEventListener('click',function(){
-        
-                //console.log(players[i]);
-                let play = players[i];
-                console.log(players.dataset.nom);
-            })
-        
-        }
-    affichenbr = document.getElementById('Nbre');
-    var div = document.createElement("div");
-    div.innerHTML = 'Nombre de joueur: ' + data.lenght; 
+/* fin du "ca marche" */

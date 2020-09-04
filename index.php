@@ -34,6 +34,7 @@ echo 'salut';
     <!--<h2>Présentation du joueur :</h2>-->
     <!--<div id="result"> </div>-->
 
+
     <h2 class="choice">Choisissez vos joueurs</h2>
 
     <div class="container">
@@ -42,7 +43,7 @@ echo 'salut';
             <a href="?action=insertPlayer()?>">Envoyer</a>
                 
             </div>
-            <div class="md-6 affichePlayer">
+            <div class="md-6" id="affichePlayer">
                 <?php echo $play1->getNom()?>
                 <button id="player" class="btn btn-warning">Joueur 1</button>
                 <?php echo $play2->getNom()?>

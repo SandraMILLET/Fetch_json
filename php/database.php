@@ -38,10 +38,10 @@ class Database
         $req = $this->db->prepare($sql);
         try {
             $result = $req->execute([
-                'nom' => $nom,
-                'pseudo' => $pseudo,
-                'xp' => $xp,
-                'img'=> $img
+                'nom' => getNom(),
+                'pseudo' => getPseudo(),
+                'xp' => getXp(),
+                'img'=>getImg()
             ]);
             return $result;
         } catch (PDOException $e) {
@@ -49,3 +49,4 @@ class Database
         }
     }
 }
+
