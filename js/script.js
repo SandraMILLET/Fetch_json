@@ -1,20 +1,51 @@
-/* debut ca marche */
-
 
 window.onload = function () {
     console.log('page load');
 
+    
+let urlAPI = "js/joueur.json";
+
+const getUsers = async function(){
+    try{
+        let response = await fetch(urlAPI)
+        if (response.ok){
+            let data =await response.json()
+            console.log(data)
+        } else {
+            console.log ('Retour du serveur : ',response.status)
+        }
+    } catch (e){
+        console.log(e)
+    }
+}
+const insertJoueur = async function (data){
+    let response = await fetch(urlAPI, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    
+    let responseData = await response.json()
+    console.log(responseData)
+}
+let ResultData = document.getElementById('joueur')
+ResultData.innerHTML = getUsers();
+
+
+
     /*********FETCH METHOD*********/
     /*récupère le DOM*/
-    let fetchResult = document.getElementById("joueur");
+    let fetchResult = document.getElementById("dom");
     /*affiche dans l'HTML*/
     fetchResult.innerHTML = '<p>OUI ! Le DOM est récupéré ! Ca marche !</p>';
 }
 
-/*insertion API*/
-let urlAPI = "js/joueur.json";
+/*insertion data php*/
+let urlphp = "php/database.php";
     
-    fetch(urlAPI)
+    fetch(urlphp)
             .then(function (response) {
                 return response.json();
             })
@@ -28,15 +59,14 @@ let urlAPI = "js/joueur.json";
             });
             //boucle de données
         function appendData(data) {
-            var mainContainer = document.getElementById("result");
+            var mainContainer = document.getElementById("resultat");
             for (var i = 0; i < data.length; i++) {
-                var div = document.createElement("div");
-                div.innerHTML = 'Name: ' + data[i].nom + ' ' + 
+                
+                mainContainer.innerHTML = 'Name: ' + data[i].nom + ' ' + 
                                 'Pseudo: ' + data[i].pseudo + ' ' + 
                                 'XP: ' + data[i].xp + ' ' + 
                                 'Avatar :' + "<img src=" + data.urlimg + ">";
                                 
-                mainContainer.appendChild(div);
+                //mainContainer.appendChild(div);
             }
         }
-/* fin du "ca marche" */

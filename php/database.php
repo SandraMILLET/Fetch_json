@@ -1,52 +1,83 @@
 <?php
 
-class Database
-{
-    private $db;
-    const DB_NAME = 'fetchJson';
-    const DB_HOST = '127.0.0.1';
-    const DB_USER = 'root';
-    const DB_PASSWORD = '';
-    const DB_TABLE = 'player';
+ini_set('display_errors', 'On');
+error_reporting(-1);
 
-    public function __construct()
-    {
-        $this->connectbdd(); // store the connexion in $db
-    }
+$nom = htmlspecialchars($_POST["nom"]);
+$pseudo = htmlspecialchars($_POST["pseudo"]);
+$email = htmlspecialchars($_POST["email"]);
+$password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+$user = 'root';
+$pass = '';
 
-    // private => can be called only here from THIS script !!
-    private function connectbdd()
-    {
-        try {
-            $this->db = new PDO('mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_NAME . ';charset=utf8', self::DB_USER, self::DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        } catch (Exception $e) {
-            echo '<div class="alert alert-danger" role="alert">
-                    ' . $e->getMessage() . '
-                </div>';
-            //die('Erreur : ' . $e->getMessage());
-        }
-    }
-    // public $db's getter
-    public function getDB()
-    {
-        return $this->db;
-    }
+try {
+		$bdd = new PDO('mysql:host=localhost;dbname=testapijson;charset=utf8', $user, $pass);
+		// set the PDO error mode to exception
+		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-   public function insertPlayer()
-    {
-        $sql = 'INSERT INTO ' . self::DB_TABLE . ' (nom, pseudo, xp, img) VALUES (:nom, :pseudo, :xp, :img)';
-        $req = $this->db->prepare($sql);
-        try {
-            $result = $req->execute([
-                'nom' => getNom(),
-                'pseudo' => getPseudo(),
-                'xp' => getXp(),
-                'img'=>getImg()
-            ]);
-            return $result;
-        } catch (PDOException $e) {
-            return 'error: ' . $e->getMessage();
-        }
-    }
+		}
+		catch(PDOException $e)
+		{
+		echo $sql . "<br>" . $e->getMessage();
+		};
+
+	
+if(isset($_POST['submitconnexion'])) {
+	
+	if(!empty($_POST['nom']) AND !empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password'])) {
+			
+			$pseudolength = strlen($pseudo);
+			
+			if($pseudolength <= 150) {
+				
+				if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					$reqmail = $bdd->prepare("SELECT * FROM login WHERE email = ?");
+	            $reqmail->execute(array($email));
+	            $mailexist = $reqmail->rowCount();
+
+	                if($mailexist == 0) {
+
+	                	if(filter_var($pseudo, FILTER_DEFAULT)) {
+	                		$reqpseudo = $bdd->prepare("SELECT * FROM login WHERE pseudo = ?");
+	                		$reqpseudo->execute(array($pseudo));
+	                		$pseudoexist = $reqpseudo->rowCount();
+	                			
+	                			if($pseudoexist == 0) { 
+
+	
+	$sql = "INSERT INTO login (nom, pseudo, email, password)
+		    VALUES ('$nom', '$pseudo', '$email', '$password')";
+		    // use exec() because no results are returned
+		    $bdd->exec($sql);
+		    /*echo "En cours d'édition";*/
+
+	$bdd = null;
+
+	header('location: index.php');
+
+								} else {
+									echo "Ce pseudo existe déjà !";
+								}
+							} else {
+								echo "Le format du pseudo est incorrect";
+							}
+						} else {
+							echo "Ce mail existe déjà";
+						}
+					} else {
+						echo "Veuillez rentrer un mail au format valide";
+					}
+			} else {
+				echo "Votre pseudonyme est trop long.";
+			}
+	} else {
+		echo "Veuillez remplir tout les champs.";
+	}
+
+} else {
+	echo "Merde";
 }
 
+
+
+?>

@@ -10,5 +10,11 @@
     "pseudo" : "Océ",
     "xp" : "2000",
     "urlimg" : "/img/canecorse.jpg"
+},
+{
+    "nom" : "Laurie",
+    "pseudo" : "Lolo",
+    "xp" : "3000",
+    "urlimg" : "/img/chaton.jpg"
 }
 ]
